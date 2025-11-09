@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status WebApp</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4A90E2">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4A90E2, #9013FE);
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+      margin: 0;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      font-size: 1.5em;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      outline: none;
+      width: 250px;
+      transition: box-shadow 0.2s ease;
+    }
+    input[type="text"]:focus {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Status WebApp</h1>
+  <input type="text" value="paused" id="statusField">
+
+  <script>
+    // Text speichern
+    const field = document.getElementById('statusField');
+    if (localStorage.getItem('status')) {
+      field.value = localStorage.getItem('status');
+    }
+    field.addEventListener('input', () => {
+      localStorage.setItem('status', field.value);
+    });
+
+    // Service Worker registrieren
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registriert'))
+        .catch(err => console.log('Service Worker Fehler:', err));
+    }
+  </script>
+</body>
+</html>
