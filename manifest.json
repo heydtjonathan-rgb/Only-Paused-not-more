@@ -1,0 +1,21 @@
+{
+  "name": "Status WebApp",
+  "short_name": "StatusApp",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#4A90E2",
+  "theme_color": "#4A90E2",
+  "description": "Eine einfache Offline-WebApp mit bearbeitbarem Textfeld",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
